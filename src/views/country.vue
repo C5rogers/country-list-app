@@ -39,23 +39,23 @@ router.go(-1)
 </script>
 
 <template>
-    <main class="w-full flex items-center px-20  justify-center min-h-screen bg-gray-900 relative">
+    <main class="w-full flex items-center px-5 md:px-20  justify-center min-h-screen bg-gray-900 relative">
         <div class="absolute left-10 top-10 text-white">
             <button class="flex gap-2 items-center bg-gray-500 px-4 py-1 rounded-full" @click="goBack"><i class="fa-solid fa-arrow-left"></i><span>Back</span></button>
         </div>
-        <div class="text-white grid grid-cols-3 gap-10" v-if="result && result.country">
+        <div class="mb-3 md:mb-0 text-white mt-20 md:mt-0 grid md:grid-cols-3 gap-10" v-if="result && result.country">
             <!-- the image -->
-            <div class="flex justify-center items-center col-span-1 text-6xl cursor-pointer">
+            <div class="w-full flex justify-center items-center col-span-1 text-6xl cursor-pointer">
                 {{ result.country.emoji }}
             </div>
             <!-- the another side bar -->
-            <div class="col-span-2  bg-gray-800 py-10 px-5 rounded-xl flex flex-col justify-center gap-5">
+            <div class=" w-full md:col-span-2  bg-gray-800 py-10 px-2 md:px-5 rounded-xl flex flex-col justify-center gap-5">
                 <!-- the country name -->
-                <div class="text-4xl font-bold border-b pb-5 border-gray-500">
+                <div class="text-2xl md:text-4xl font-bold border-b pb-5 border-gray-500 capitalize">
                     {{ result.country.name }}
                 </div>
                 <!-- the more infos -->
-                <div class=" w-full grid grid-cols-2 items-center px-10 ">
+                <div class=" w-full grid gap-10 md:gap-0 md:grid-cols-2 items-center px-4 md:px-10 ">
                     <!-- the left one -->
                     <div>
                         <ul class="flex flex-col gap-2 justify-center">
