@@ -5,6 +5,6 @@
 
 <template>
   <main>
-    <h1 class="">This is Home</h1>
+    <h1>This is Home</h1>
   </main>
 </template>
