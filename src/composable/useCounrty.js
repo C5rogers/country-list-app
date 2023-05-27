@@ -1,12 +1,13 @@
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
+
 import { useQuery } from '@vue/apollo-composable'
 import gql from 'graphql-tag'
 
 export default function useCountry() {
     const countrys = ref([])
-    const getAllCoutnrys = async() => {
-        try {
-            const { result } = useQuery(gql `
+
+    try {
+        const { result } = useQuery(gql `
             query MyQuery {
                 countries {
                   name
@@ -24,18 +25,17 @@ export default function useCountry() {
                 }
               }
           `)
-            watch(result, value => {
-                countrys.value = result
-                console.log(result)
-            })
-        } catch (error) {
-            console.log(error)
-        }
+        countrys.value = result
+    } catch (error) {
+        console.log(error)
     }
+
+
+
 
 
     return {
         countrys,
-        getAllCoutnrys
+
     }
 }
