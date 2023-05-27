@@ -6,11 +6,12 @@ import gql from 'graphql-tag'
 const route=useRoute()
 const router=useRouter()
 const code=route.params.code
+console.log(code)
 
 
 const {result}=useQuery(gql`
-query MyQuery {
-  country(code: "ET") {
+query MyQuery($code: ID!) {
+  country(code: $code) {
     code
     capital
     emoji
@@ -26,10 +27,12 @@ query MyQuery {
     }
   }
 }
-`)
+`,()=>({
+    code:code
+}))
 
 const goBack=()=>{
-router.push(-1)
+router.go(-1)
 }
 
 
@@ -66,7 +69,8 @@ router.push(-1)
                         <ul class="flex flex-col gap-2 justify-center">
                             <li class="flex items-center text-xs text-gray-200 font-light gap-2"><span class="font-bold text-lg">Phone Code: </span>+{{ result.country.phone }}...</li>
                             <li class="flex items-center text-xs text-gray-200 font-light gap-2"><span class="font-bold text-lg">Country Continent: </span>{{ result.country.continent.name }}</li>
-                            <li class="flex flex-wrap"><span class="font-bold text-lg">State: </span><span v-for="(state, index) in result.country.states" :key="index" class="rounded-full bg-gray-600 flex items-center w-fit px-1 py-1 m-1 text-xs cursor-pointer">{{ state.name }}</span></li>
+                            <li class="flex flex-wrap" v-if="result.country.states.length>0"><span class="font-bold text-lg">State: </span><span v-for="(state, index) in result.country.states" :key="index" class="rounded-full bg-gray-600 flex items-center w-fit px-1 py-1 m-1 text-xs cursor-pointer">{{ state.name }}</span></li>
+                            <li v-else><span class="font-light text-lg text-red-500">Have No State...</span></li>
                         </ul>
                     </div>
                 </div>
