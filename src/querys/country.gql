@@ -13,4 +13,6 @@ query MyQuery {
                   }
                   capital
                 }
+                
 }
+

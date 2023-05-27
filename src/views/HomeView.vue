@@ -5,6 +5,7 @@ import countryQuery from '../querys/country.gql'
 import { ref } from 'vue';
 
 
+
 const {result}=useQuery(countryQuery)
 
 
@@ -30,7 +31,7 @@ const filterFild=()=>{
             </div>
         </form>
     </div>
-    <div class="w-full grid grid-cols-4 gap-5 mt-10">
+    <div class="w-full grid sm:grid-cols-2 md:grid-cols-4 gap-5 mt-10">
       <div v-for="(country,index) in result && result.countries" :key="index" class="w-full border flex flex-col gap-3">
         <!-- {{ country }} -->
         <router-link :to="{name:'Country',params:{code:country.code}}">

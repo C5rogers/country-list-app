@@ -1,0 +1,17 @@
+# query MyQuery{
+#     countrie(code : $variable){
+#                   name
+#                   phone
+#                   code
+#                   currency
+#                   emoji
+#                   languages {
+#                     name
+#                   }
+#                   states {
+#                     name
+#                   }
+#                   capital
+#                 }
+#     }
+# }
